@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>como subir una imagen a firebase</title>
+
+
+<link rel="stylesheet" href="css/bootstrap.min.css" >
+<link rel="stylesheet" href="css/css.css" >
+
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/Redimencionar.js"></script>
+    
+</head>
+<body>
+<div class="container">
+<!-- Región selección imagen -->
+    <div class="row">
+        <div class="col-md-12 text-center">
+        <br/>
+            <span id="fileselector">
+                <label class="btn btn-default" for="upload-file-selector">
+                <input id="upload-file-selector" type="file" accept="image/x-png,image/gif,image/jpeg" >
+                <i class="fa_icon icon-upload-alt margin-correction"></i>Subir Imagen
+                </label>
+            </span>
+
+        </div>
+    </div>
+<!-- Región muestreo de imagen -->
+    <div class="row">
+        <div class="col-md-12 text-center">
+        <br/>
+           <img id="img" src="img/no-image.png" class="img-thumbnail" width="150" />
+        </div>
+    </div>
+    
+<!-- Mostrar las imágenes subidas a firebase -->
+    <div class="row text-center" id="Loader" style="display:none">
+        <img src="img/ajax-loader.gif"/>
+    </div>
+</div>
+<!-- firebase -->
+
+    
+    
+</body> 
+</html>

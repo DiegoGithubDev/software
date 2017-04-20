@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>como subir una imagen a firebase</title>
+
+
+<link rel="stylesheet" href="css/bootstrap.min.css" >
+<link rel="stylesheet" href="css/css.css" >
+
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/Redimencionar.js"></script>
+    
+</head>
+<body>
+<div class="container">
+<!-- Región selección imagen -->
+    <div class="row">
+        <div class="col-md-12 text-center">
+        <br/>
+            <span id="fileselector">
+                <label class="btn btn-default" for="upload-file-selector">
+                <input id="upload-file-selector" type="file" accept="image/x-png,image/gif,image/jpeg" >
+                <i class="fa_icon icon-upload-alt margin-correction"></i>Subir Imagen
+                </label>
+            </span>
+
+        </div>
+    </div>
+<!-- Región muestreo de imagen -->
+    <div class="row">
+        <div class="col-md-12 text-center">
+        <br/>
+           <img id="img" src="img/no-image.png" class="img-thumbnail" width="150" />
+        </div>
+    </div>
+    
+<!-- Mostrar las imágenes subidas a firebase -->
+    <div class="row text-center" id="Loader" style="display:none">
+        <img src="img/ajax-loader.gif"/>
+    </div>
+</div>
+<!-- firebase -->
+<script src="https://www.gstatic.com/firebasejs/3.6.4/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBGcIVuJwpYmr5Eu81UZVNvDlHiI-pPV9Y",
+    authDomain: "chatfirebase-73f27.firebaseapp.com",
+    databaseURL: "https://chatfirebase-73f27.firebaseio.com",
+    storageBucket: "chatfirebase-73f27.appspot.com",
+    messagingSenderId: "1085267677865"
+  };
+  firebase.initializeApp(config);
+    
+  var TablaDeBaseDatos= firebase.database().ref('Imagenes');
+    
+$('#upload-file-selector').change(function(){
+    if(this.files && this.files[0]){
+        var Archivo= new FileReader();
+        Archivo.onload=function(e){
+        var ImagenPequenia= RedimencionarImagen(e.target.result,165,165); 
+            TablaDeBaseDatos.push({
+                urlLarge:e.target.result,
+                url:ImagenPequenia
+                
+            });
+            // Visualizar la imagen en la etiqueta img
+             $('#img').attr('src',ImagenPequenia);
+            
+        };
+        Archivo.readAsDataURL(this.files[0]);
+        
+        
+    }
+    
+    
+    
+});
+    
+</script>
+    
+    
+</body> 
+</html>
