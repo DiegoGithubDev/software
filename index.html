@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>como subir una imagen a firebase</title>
+
+
+<link rel="stylesheet" href="css/bootstrap.min.css" >
+<link rel="stylesheet" href="css/css.css" >
+
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/Redimencionar.js"></script>
+    
+</head>
+<body>
+<h1>index.html</h1>
+<div class="container">
+<!-- Región selección imagen -->
+    <div class="row">
+        <div class="col-md-12 text-center">
+        <br/>
+            <span id="fileselector">
+                <label class="btn btn-default" for="upload-file-selector">
+                <input id="upload-file-selector" type="file" accept="image/x-png,image/gif,image/jpeg" >
+                <i class="fa_icon icon-upload-alt margin-correction"></i>Subir Imagen
+                </label>
+            </span>
+
+        </div>
+    </div>
+<!-- Región muestreo de imagen -->
+    <div class="row">
+        <div class="col-md-12 text-center">
+        <br/>
+           <img id="img" src="img/no-image.png" class="img-thumbnail" style="display:none" width="150" />
+        </div>
+    </div>
+    
+<!-- Mostrar las imágenes subidas a firebase -->
+    <div class="row text-center" id="Loader" style="display:none">
+        <img src="img/ajax-loader.gif"/>
+    </div>
+    <!-- Mostrar la lista de imágenes de firebase -->
+    <div class="row" id="DivImagenes"></div>
+    
+    <!-- Código del modal con bootstrap -->
+    <!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Imagen Firebase</h4>
+      </div>
+      <div class="modal-body ">
+        <!-- Imagen que esta en firebase -->
+          <img  src="" id="PreviewImg"  class="img-responsive" />
+      </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-warning">descargar</button>
+        </div>
+      
+    </div>
+  </div>
+</div>
+
+    
+</div>
+<!-- fire
