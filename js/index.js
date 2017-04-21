@@ -1,24 +1,11 @@
 
+//var  imagenesFbref= firebase.database().ref().child("imagenes");
 
-
-var config = {
-        apiKey: "AIzaSyD0miVM-LBHNt3FzaX-Apmsx4NkOvJowOY",
-        authDomain: "software-eventos.firebaseapp.com",
-        databaseURL: "https://software-eventos.firebaseio.com",
-        projectId: "software-eventos",
-        storageBucket: "software-eventos.appspot.com",
-        messagingSenderId: "580152220271"
-    };
-    firebase.initializeApp(config);
-
-var  imagenesFbref= firebase.database().ref().child("imagenes");
-var  storageRef = firebase.storage().ref();
-var fichero;
 
 window.addEventListener("load",inicializar) ;
 function inicializar() {
 	subirImagenFirabase();
-	
+	alert("hola");
 }
 
 
@@ -26,6 +13,7 @@ function subirImagenFirabase(){
 	 fichero = document.getElementById("upload-file-selector");
 	 fichero.addEventListener("change",function(e){
 	 	var imagenASubir= e.target.files[0];// tener en cuenta
+	 	alert(imagenASubir);
 	 	var uploadTask = storageRef.child("Imagenes/"+imagenASubir.name).put(imagenASubir);
 	  
 
