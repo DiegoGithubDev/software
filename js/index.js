@@ -1,6 +1,6 @@
 
 
-window.addEventListener("load",inicializar) ;
+
 var config = {
         apiKey: "AIzaSyD0miVM-LBHNt3FzaX-Apmsx4NkOvJowOY",
         authDomain: "software-eventos.firebaseapp.com",
@@ -12,9 +12,10 @@ var config = {
     firebase.initializeApp(config);
 
 var  imagenesFbref= firebase.database().ref().child("imagenes");
-var  storageRef = firebase.storage().ref;
-var fichero
+var  storageRef = firebase.storage().ref();
+var fichero;
 
+window.addEventListener("load",inicializar) ;
 function inicializar() {
 	subirImagenFirabase();
 	
@@ -25,7 +26,7 @@ function subirImagenFirabase(){
 	 fichero = document.getElementById("upload-file-selector");
 	 fichero.addEventListener("change",function(e){
 	 	var imagenASubir= e.target.files[0];// tener en cuenta
-	 	var uploadTask = storageRef.child("Imagenes/"+imagenASubir.name).put(imagenASubir)
+	 	var uploadTask = storageRef.child("Imagenes/"+imagenASubir.name).put(imagenASubir);
 	  
 
 	     //obtener barra progreso
