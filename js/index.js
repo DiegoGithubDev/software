@@ -11,8 +11,8 @@ var config = {
     };
     firebase.initializeApp(config);
 
-var  TablaDeBaseDatos= firebase.database().ref('Imagenes');
-var  imagenesStorageRef = firebase.storage().child("imagenes");
+var  imagenesFbref= firebase.database().ref().child("imagenes");
+var  storageRef = firebase.storage().ref;
 var fichero
 
 function inicializar() {
@@ -25,6 +25,6 @@ function subirImagenFirabase(){
 	 fichero = document.getElementById("upload-file-selector");
 	 fichero.addEventListener("change",function(e){
 	 	var imagenASubir= fichero.files[0];
-	 	imagenesStorageRef.child("imagenes/"+imagenASubir.name).put(imagenASubir)
+	 	storageRef.child("imagenes/"+imagenASubir.name).put(imagenASubir)
 	 });
 }
