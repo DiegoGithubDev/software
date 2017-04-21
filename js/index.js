@@ -1,15 +1,7 @@
-window.onload = inicializar();
-var TablaDeBaseDatos;
 
 
-function inicializar() {
-	referenciarFirebase();
-	subirImagenFirabase();
-}
-
-function referenciarFirebase(){
-	// Initialize Firebase
-    var config = {
+window.addEventListener("load",inicializar) ;
+var config = {
         apiKey: "AIzaSyD0miVM-LBHNt3FzaX-Apmsx4NkOvJowOY",
         authDomain: "software-eventos.firebaseapp.com",
         databaseURL: "https://software-eventos.firebaseio.com",
@@ -19,7 +11,20 @@ function referenciarFirebase(){
     };
     firebase.initializeApp(config);
 
+var  TablaDeBaseDatos= firebase.database().ref('Imagenes');
+var  imagenesStorageRef = firebase.storage().child("imagenes");
+var fichero
 
-   TablaDeBaseDatos= firebase.database().ref('Imagenes');
+function inicializar() {
+	subirImagenFirabase();
+	
+}
 
+
+function subirImagenFirabase(){
+	 fichero = document.getElementById("upload-file-selector");
+	 fichero.addEventListener("change",function(e){
+	 	var imagenASubir= fichero.files[0];
+	 	imagenesStorageRef.child("imagenes/"+imagenASubir.name).put(imagenASubir)
+	 });
 }
