@@ -24,7 +24,31 @@ function inicializar() {
 function subirImagenFirabase(){
 	 fichero = document.getElementById("upload-file-selector");
 	 fichero.addEventListener("change",function(e){
-	 	var imagenASubir= fichero.files[0];
-	 	storageRef.child("imagenes/"+imagenASubir.name).put(imagenASubir)
+	 	var imagenASubir= e.target.files[0];// tener en cuenta
+	 	var uploadTask = storageRef.child("Imagenes/"+imagenASubir.name).put(imagenASubir)
+	  
+
+	     //obtener barra progreso
+	      var uploader = document.getElementById('uploader');
+	  
+        // Actualizar barra progreso
+        uploadtask.on('state_changed',
+
+          function progress(snapshot) {
+            var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            uploader.value = percentage;
+          },
+
+          function error(err) {
+
+          },
+
+
+          function complete() {
+
+
+          }
+
+
 	 });
 }
