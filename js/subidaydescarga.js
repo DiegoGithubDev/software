@@ -1,5 +1,4 @@
   // Initialize Firebase
-  alert("hola")
       var config = {
         apiKey: "AIzaSyD0miVM-LBHNt3FzaX-Apmsx4NkOvJowOY",
         authDomain: "software-eventos.firebaseapp.com",
@@ -32,6 +31,7 @@
           function progress(snapshot) {
             var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
             uploader.value = percentage;
+            alert("jaja")
           },
 
           function error(err) {
@@ -40,7 +40,8 @@
 
 
           function complete() {
-
+                   var urlDownload= task.snapshot.downloadURL();
+              alert(urlDownload);
 
           }
 

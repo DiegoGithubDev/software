@@ -11,7 +11,25 @@
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/Redimencionar.js"></script>
-    
+    <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+    <script>
+        paypal.Button.render({
+
+            env: 'production', // Optional: specify 'sandbox' environment
+
+            payment: function() {
+                // Set up the payment here, when the buyer clicks on the button
+            },
+
+            onAuthorize: function(data, actions) {
+                // Execute the payment here, when the buyer approves the transaction
+            }
+
+        }, '#paypal-button');
+    </script>
+
+
+
 </head>
 <body>
 <h1>chato</h1>
@@ -33,6 +51,20 @@
     <div class="row">
         <div class="col-md-12 text-center">
         <br/>
+            <div id="paypal-button"></div>
+            <div id="buynow-sm">
+                <h2>Buy Now (Small)</h2>
+                <script async src="../../dist/button.js?merchant=6XF3MPZBZV6HU"
+                        data-button="buynow"
+                        data-type="form"
+                        data-name="Buy now!"
+                        data-amount="1.00"
+                        data-size="small"
+                        data-callback="http://example.com/callback"
+                ></script>
+
+                <img src="https://www.paypalobjects.com/webstatic/es_MX/mktg/logos-buttons/redesign/btn_11.png" alt="undefined" />
+            </div>
            <img id="img" src="img/no-image.png" class="img-thumbnail" style="display:none" width="150" />
         </div>
     </div>
@@ -61,12 +93,37 @@
         <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             <button type="button" class="btn btn-warning">descargargit</button>
+            //begin boton para ir a un carrito de compras
+                <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" >
+                <input type="hidden" name="cmd" value="_cart">
+                <input type="hidden" name="business" value="diego.mansilla.sistemas@gmail.com">
+                <input type="hidden" name="lc" value="MX">
+                <input type="hidden" name="item_name" value="descargar">
+                <input type="hidden" name="amount" value="15.00">
+                <input type="hidden" name="currency_code" value="MXN">
+                <input type="hidden" name="button_subtype" value="products">
+                <input type="hidden" name="no_note" value="0">
+                <input type="hidden" name="tax_rate" value="2.000">
+                <input type="hidden" name="shipping" value="123.00">
+                <input type="hidden" name="add" value="1">
+                <input type="hidden" name="bn" value="PP-ShopCartBF:btn_cart_LG.gif:NonHostedGuest">
+                <input type="image" src="https://www.paypalobjects.com/es_XC/i/btn/btn_cart_LG.gif" border="0" name="submit" alt="PayPal, la forma más segura y rápida de pagar en línea.">
+                <img alt="" border="0" src="https://www.paypalobjects.com/es_XC/i/scr/pixel.gif" width="1" height="1">
+            </form>
+            //end boton para ir a un carrito de compras
+
+
         </div>
       
     </div>
   </div>
 </div>
-
+    <script src="js/paypal-button.min.js?merchant=YOUR_MERCHANT_ID"
+            data-button="buynow"
+            data-name="My product"
+            data-amount="1.00"
+            async
+    ></script>
     
 </div>
 <!-- firebase -->
